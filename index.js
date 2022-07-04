@@ -62,8 +62,6 @@ socket.on('connection', (ws,req) => {
         console.log('closed')
         connected[token] = connected[token].filter((client) => client !== ws);
     });
-
-    ws.send('connected');
 })
 
 // on disconect remove from the list
