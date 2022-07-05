@@ -4,7 +4,7 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 certbot certonly --standalone -d myminio.com --staple-ocsp -m test@yourdomain.io --agree-tos
 ls -l /etc/letsencrypt/live/myminio.com
 
-
+npm start > stdout.txt 2> stderr.txt &
 
 source
 https://certbot.eff.org/instructions?ws=apache&os=ubuntufocal
