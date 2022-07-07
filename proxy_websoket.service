@@ -1,13 +1,16 @@
-[Unit]
-Description=proxy_websoket
-Documentation=https://example.com
-After=network.target
+[get the certificate]
+sudo snap install core; sudo snap refresh core
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+certbot certonly --standalone -d myminio.com --staple-ocsp -m test@yourdomain.io --agree-tos
+ls -l /etc/letsencrypt/live/myminio.com
 
-[Service]
-Type=simple
-User=root
-ExecStart=node /proxy_websoket/index.js
-Restart=on-failure
+source
+https://certbot.eff.org/instructions?ws=apache&os=ubuntufocal
+https://docs.min.io/docs/generate-let-s-encypt-certificate-using-concert-for-minio.html
 
-[Install]
-WantedBy=multi-user.target
+[set up the service]
+/etc/systemd/system
+sudo systemctl start proxy_websoket
+sudo systemctl enable proxy_websoket
+sudo systemctl stauts proxy_websoket
