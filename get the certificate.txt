@@ -5,6 +5,9 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 certbot certonly --standalone -d myminio.com --staple-ocsp -m test@yourdomain.io --agree-tos
 ls -l /etc/letsencrypt/live/myminio.com
 
+// see certificate expiration date
+sudo openssl x509 -dates -noout -in ./cert.pem
+
 source
 https://certbot.eff.org/instructions?ws=apache&os=ubuntufocal
 https://docs.min.io/docs/generate-let-s-encypt-certificate-using-concert-for-minio.html
