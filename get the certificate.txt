@@ -1,0 +1,15 @@
+[get the certificate]
+sudo snap install core; sudo snap refresh core
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+certbot certonly --standalone -d myminio.com --staple-ocsp -m test@yourdomain.io --agree-tos
+ls -l /etc/letsencrypt/live/myminio.com
+
+source
+https://certbot.eff.org/instructions?ws=apache&os=ubuntufocal
+https://docs.min.io/docs/generate-let-s-encypt-certificate-using-concert-for-minio.html
+
+[set up the service]
+/lib/systemd/system/proxy_websoket.service
+sudo systemctl start proxy_websoket
+sudo systemctl stauts proxy_websoket

@@ -1,0 +1,9 @@
+[Unit]
+Description=proxy_websoket
+Documentation=https://example.com
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/node /proxy_websoket/index.js
+Restart=always
