@@ -1,9 +1,13 @@
 [Unit]
 Description=proxy_websoket
 Documentation=https://example.com
+After=network.target
 
 [Service]
 Type=simple
 User=root
-ExecStart=/usr/bin/node /proxy_websoket/index.js
-Restart=always
+ExecStart=node /proxy_websoket/index.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
