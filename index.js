@@ -7,8 +7,8 @@ const fs = require("fs");
 const connected = {};
 
 server = HttpsServer({
-    cert: fs.readFileSync('./cert.pem'),
-    key: fs.readFileSync('./privkey.pem')
+    cert: fs.readFileSync('/proxy_websoket/cert.pem'),
+    key: fs.readFileSync('/proxy_websoket/privkey.pem')
 })
 socket = new WebSocket({
     server: server
@@ -16,7 +16,7 @@ socket = new WebSocket({
 
 app.post('/', (req, res) => {
     const {token,data} = req.body
-    console.log(token,data)
+    // console.log(token,data)
     if(connected[token])
     {
         for(const client of connected[token])
@@ -51,7 +51,7 @@ const get_parameters = (req) => {
 socket.on('connection', (ws,req) => {
     // setup routes
     const { token } = get_parameters(req);
-    console.log(token)
+    // console.log(token)
     // check if token exists in connected
     if(!connected[token]) {
         connected[token] = [];
@@ -59,7 +59,7 @@ socket.on('connection', (ws,req) => {
     // add to connected
     connected[token].push(ws);
     ws.on('close', () => {
-        console.log('closed')
+        // console.log('closed')
         connected[token] = connected[token].filter((client) => client !== ws);
     });
 })
