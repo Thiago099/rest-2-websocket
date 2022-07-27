@@ -16,4 +16,4 @@ https://docs.min.io/docs/generate-let-s-encypt-certificate-using-concert-for-min
 /lib/systemd/system/proxy_websoket.service
 sudo systemctl start proxy_websoket
 sudo systemctl enable proxy_websoket
-sudo systemctl stauts proxy_websoket
+sudo systemctl stautus proxy_websoket
